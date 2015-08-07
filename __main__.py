@@ -1,31 +1,53 @@
 from tkinter import *
 from elements.hexagon import Hex
+from elements.main_frame import MainFrame
+
+def add_hex_at_grid_location(x, y, w, h):
+    trueX = (w*0.5) + (w*0.75) * x
+    if x % 2 == 0:
+        trueY = (h*0.5) + h * y
+    else:
+        trueY = h + h * y
+
+    print(str(trueX) + ", " + str(trueY))
+    return Hex(root, int(trueX), int(trueY), root.hex_image)
+#END DEF=======================================================================
+
+
 
 root = Tk()
 
-root.image = PhotoImage(file='hex.png')
+root.move_mode = True
+
+root.hex_image = PhotoImage(file='hexagon_normal.png')
+root.mf_image = PhotoImage(file='main_frame.png')
+
+#mf = MainFrame(root, root.mf_image)
 """
-clear_screen = Label(root, image=None, width=1920, height=1080)
-fr = Frame(root, width=102, height=90, bg="#00ff00")
-label1 = Label(fr, image=root.image, width=102, height=90, bg='white')
-label1.pack()
-newWindow = Toplevel(root)
-fr.place(x=0, y=0, width=102, height=90)
-fr2 = Frame(newWindow, width=102, height=90, bg="#0000ff")
-label2 = Label(fr2, image=root.image, width=102, height=90, bg='white')
-label2.pack()
-fr2.place(x=80, y=0, width=102, height=90)
+hex1 = Hex(root, 94, 55, root.image)
+hex2 = Hex(root, 94, 165, root.image)
+hex3 = Hex(root, 188, 220, root.image)
 """
 
-hex1 = Hex(root, 0, 0, root.image)
-hex2 = Hex(root, 102, 90, root.image, "faggot")
+add_hex_at_grid_location(0,0, 104, 90)
+add_hex_at_grid_location(1,0, 104, 90)
+add_hex_at_grid_location(1,1, 104, 90)
+add_hex_at_grid_location(1,2, 104, 90)
+add_hex_at_grid_location(2,2, 104, 90)
+add_hex_at_grid_location(3,2, 104, 90)
 
 root.configure(background='white')
 root.geometry("1920x1080+0+0")
-#root.overrideredirect(True)
+root.overrideredirect(True)
 root.wm_attributes("-topmost", True)
 #root.wm_attributes("-disabled", True)
 root.wm_attributes("-transparentcolor", "white")
 
 
 root.mainloop()
+
+
+
+#94, 55 - 0 / 0
+#94, 165 - 0 / 1 (+110)
+#188, 220 - 1 / 0  (+94 / +110)
