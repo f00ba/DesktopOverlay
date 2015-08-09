@@ -82,29 +82,22 @@ class Tile(Toplevel):
 
             newX = screenX - ((screenX - self.parent.tile_offset_x) % int(self.w * self.parent.tile_distance_x))
 
-            if not ((newX - self.parent.tile_offset_x) / int(self.w * self.parent.tile_distance_x) < 23 and newX - self.parent.tile_offset_x / int(self.w * self.parent.tile_distance_x) >= 0):
+            if not ((newX - self.parent.tile_offset_x) / int(self.w * self.parent.tile_distance_x) < self.parent.grid_max_x and newX - self.parent.tile_offset_x / int(self.w * self.parent.tile_distance_x) >= 0):
                 move_okay = False
 
 
             if int((newX - self.parent.tile_offset_x) / (self.w * self.parent.tile_distance_x)) % 2 == 0:
-                print("Hello")
                 newY = screenY - ((screenY - self.parent.tile_offset_y + int(self.h * self.parent.tile_distance_y_2nd)) % int(self.parent.tile_distance_y * self.h))
                 if not (((newY - int(self.h * self.parent.tile_distance_y_2nd) - self.parent.tile_offset_y) / int(self.parent.tile_distance_y * self.h) < 11) and ((newY - int(self.h * self.parent.tile_distance_y_2nd) - self.parent.tile_offset_y) / int(self.parent.tile_distance_y * self.h) >= 0)):
                     move_okay = False
             else:
                 newY = screenY - ((screenY - self.parent.tile_offset_y) % int(self.parent.tile_distance_y * self.h))
-                if not (((newY - self.parent.tile_offset_y) / (self.h * self.parent.tile_distance_y) < 12) and ((newY - self.parent.tile_offset_y) / (self.h * self.parent.tile_distance_y) >= 0)):
+                if not (((newY - self.parent.tile_offset_y) / (self.h * self.parent.tile_distance_y) < self.parent.grid_max_y) and ((newY - self.parent.tile_offset_y) / (self.h * self.parent.tile_distance_y) >= 0)):
                     move_okay = False
 
-            print(move_okay, screenX, screenY)
-
-            print((newX - self.parent.tile_offset_x) / (self.w * self.parent.tile_distance_x))
-
-            #if move_okay:
+        if move_okay:
             self.x = newX
             self.y = newY
-
-            print((newX - self.parent.tile_offset_x) / self.w)
 
             self.geometry(self.translateGeometry(newX, newY, self.w, self.h))
 

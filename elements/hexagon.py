@@ -109,8 +109,6 @@ class Hex(Toplevel):
             if not ((newX - self.parent.offset_x) / (self.w * 0.75) < 23 and (newX - self.parent.offset_x) / (self.w * 0.75) >= 0):
                 move_okay = False
 
-            print(str(int((newX - self.parent.offset_x) / (self.w * 0.75)) % 2 == 0))
-
             if int((newX - self.parent.offset_x) / (self.w * 0.75)) % 2 == 0:
                 print("Hello")
                 newY = screenY - ((screenY - self.parent.offset_y - int(self.h * 0.5)) % self.h)# + int(self.h * 0.5)

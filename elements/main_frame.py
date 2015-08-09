@@ -26,7 +26,7 @@ class MainFrame(Toplevel):
 
     def translateGeometry(self, x, y, w, h):
         print(str(w) + "x" + str(h) + "+" + str(x) + "+" + str(y))
-        return str(w) + "x" + str(h) + "+" + str(x) + "+" + str(y)
+       # return str(w) + "x" + str(h) + "+" + str(x) + "+" + str(y)
     """
     def translateGeometry(self, x, y, w, h, screen_width, screen_height):
         geoString = str(w) + "x" + str(h)
