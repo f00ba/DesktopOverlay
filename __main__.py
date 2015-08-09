@@ -1,33 +1,45 @@
 from tkinter import *
 from elements.hexagon import Hex
+from elements.tile import Tile
 from elements.main_frame import MainFrame
 
 def add_hex_at_grid_location(x, y, w, h):
-    trueX = (w*0.5) + (w*0.75) * x
+    trueX = int(w * root.tile_distance_x) * x + root.tile_offset_x
     if x % 2 == 0:
-        trueY = (h*0.5) + h * y
+        trueY = int(h * root.tile_distance_y) * y + root.tile_offset_y + (h * root.tile_distance_y_2nd)
     else:
-        trueY = h + h * y
+        trueY = int(h * root.tile_distance_y) * y + root.tile_offset_y
 
-    print(str(trueX) + ", " + str(trueY))
-    return Hex(root, int(trueX), int(trueY), root.hex_image)
+    return Tile(root, 0, int(trueX), int(trueY), 104, 90)
 #END DEF=======================================================================
 
 
 
 root = Tk()
 
+root.debug = False
+
+root.tile_offset_x = 30
+root.tile_offset_y = 24
+
+root.tile_distance_x = 0.75
+root.tile_distance_y = 1.00
+root.tile_distance_y_2nd = 0.50
+
 root.move_mode = True
 
-root.hex_image = PhotoImage(file='hexagon_normal.png')
-root.mf_image = PhotoImage(file='main_frame.png')
+root.hex_image = PhotoImage(file='tmp.png')
+root.mf_image = PhotoImage(file='hex_main-01.png')
 
-#mf = MainFrame(root, root.mf_image)
+mf = MainFrame(root, root.mf_image)
 """
 hex1 = Hex(root, 94, 55, root.image)
 hex2 = Hex(root, 94, 165, root.image)
 hex3 = Hex(root, 188, 220, root.image)
 """
+
+#Clock(root, 200, 200)
+
 
 add_hex_at_grid_location(0,0, 104, 90)
 add_hex_at_grid_location(1,0, 104, 90)

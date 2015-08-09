@@ -5,10 +5,11 @@ class MainFrame(Toplevel):
     def __init__(self, parent, image, title="Test"):
 
         super(MainFrame, self).__init__(parent)
-        self.config(width=400, height=262)
+
+        self.config(width=735, height=500)
 
         self.title(title)
-        self.geometry(self.translateGeometry(0, 0, 400, 262))
+        self.geometry(self.translateGeometry(0, 0, 735, 500))
 
         self.overrideredirect(True)
         self.configure(background='white')
@@ -18,7 +19,7 @@ class MainFrame(Toplevel):
 
        # self.frame = Frame(self, width=102, height=90, bg="#ffffff")
 
-        self.mfImg = Label(self, image=image, width=400, height=262, bg='white')
+        self.mfImg = Label(self, image=image, width=735, height=500, bg='white')
         self.mfImg.place(x=-2, y=-2)
 
       #  self.frame.place(x=0, y=0)
